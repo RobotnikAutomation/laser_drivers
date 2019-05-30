@@ -93,7 +93,7 @@ int main(int argc, char **argv)
 
 	ros::NodeHandle nh;
 	ros::NodeHandle nh_ns("~");
-	ros::Publisher scan_pub = nh.advertise<sensor_msgs::LaserScan> ("scan", 1);
+	ros::Publisher scan_pub = nh_ns.advertise<sensor_msgs::LaserScan> ("scan", 1);
 	//nh_ns.param("port", port, string("/dev/lms200"));
 	//nh_ns.param("baud", baud, 38400);
 	//nh_ns.param("inverted", inverted, false);
@@ -116,8 +116,8 @@ int main(int argc, char **argv)
 		sick_lms.SetSickScanDataFormat(SickLMS1xx::SICK_LMS_1XX_SCAN_FORMAT_DIST_SINGLE_PULSE_REFLECT_NONE);
 		sick_lms.SetSickScanFreqAndRes(SickLMS1xx::SICK_LMS_1XX_SCAN_FREQ_25,
 		                               SickLMS1xx::SICK_LMS_1XX_SCAN_RES_25);
-		/*sick_lms.SetSickScanFreqAndRes(SickLMS1xx::SICK_LMS_1XX_SCAN_FREQ_50,
-		                               SickLMS1xx::SICK_LMS_1XX_SCAN_RES_50);*/
+		sick_lms.SetSickScanFreqAndRes(SickLMS1xx::SICK_LMS_1XX_SCAN_FREQ_50,
+		                               SickLMS1xx::SICK_LMS_1XX_SCAN_RES_50);
 
 		// Scale is mm with the 1xx driver
 		scale = 0.001;
