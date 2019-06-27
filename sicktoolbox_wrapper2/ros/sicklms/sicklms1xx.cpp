@@ -169,8 +169,8 @@ int main(int argc, char **argv)
 	try {
 		ros::Time last_scan_time = ros::Time::now();
 		while(ros::ok()) {
-			angle_min = sick_lms.GetSickStartAngle() * M_PI / 180.0;
-			angle_max = sick_lms.GetSickStopAngle()  * M_PI / 180.0;
+			angle_min = sick_lms.GetSickStartAngle() * M_PI / 180.0 - M_PI/2.0;
+			angle_max = sick_lms.GetSickStopAngle()  * M_PI / 180.0 - M_PI/2.0;
 
 			sick_lms.GetSickMeasurements(range_values, NULL, NULL, NULL, n_range_values);
 			n_intensity_values = 0;
